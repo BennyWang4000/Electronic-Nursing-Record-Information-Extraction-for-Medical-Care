@@ -1,6 +1,6 @@
 from ltp import LTP
-from ner import HealthNER
-from sentence_unit import SentenceUnit
+from core.ner import HealthNER
+from core.sentence_unit import SentenceUnit
 
 
 class Dep:

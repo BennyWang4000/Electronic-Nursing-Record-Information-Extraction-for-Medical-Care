@@ -3,7 +3,7 @@ import os
 import glob
 from ltp import LTP
 
-from utils import ids_dict, label_dict
+from core.utils import ids_dict, label_dict
 import torch
 from transformers import BertTokenizerFast
 

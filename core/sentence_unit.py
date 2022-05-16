@@ -1,4 +1,4 @@
-from word_unit import WordUnit
+from core.word_unit import WordUnit
 
 
 class SentenceUnit:
