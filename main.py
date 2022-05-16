@@ -1,6 +1,7 @@
 from core.dep import Dep
 from core.ner import HealthNER
 from core.sentence_unit import SentenceUnit
+from ui.ui import UserInterface
 from ltp import LTP
 from config import *
 import mysql.connector as mysql
@@ -12,14 +13,9 @@ def main():
 
 
 if __name__ == '__main__':
-    ltp = LTP()
-    hner = HealthNER(hner_model_rel_path)
-    dep = Dep(hner=hner, ltp=ltp)
-
-    window = tk.Tk()
-    window.title('NUTC')
-    window.geometry('800x600')
-    window.configure(background='white')
-    window.mainloop()
+    # ltp = LTP()
+    # hner = HealthNER(hner_model_rel_path)
+    # dep = Dep(hner=hner, ltp=ltp)
+    ui= UserInterface()
 
     # print(dep.)
