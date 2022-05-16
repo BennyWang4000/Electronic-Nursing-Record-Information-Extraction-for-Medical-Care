@@ -8,7 +8,6 @@ class SentenceUnit:
         dep_lst: list<tuple<int, int, str>>
         ne_idx_lst: list<int>
         ne_dct: list<dict<'word': str, 'type': str, 'pos': tuple<int, int>>>
-
     '''
 
     def __init__(self, seg_lst, pos_lst, dep_lst, ne_idx_lst, ne_dct, sdp_lst):
