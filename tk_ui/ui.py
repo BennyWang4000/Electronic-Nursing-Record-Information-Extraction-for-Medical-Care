@@ -3,7 +3,7 @@ from ui.config import *
 
 
 class UserInterface:
-    def __init__(self, hdep):
+    def __init__(self, hdep=None):
         self.window = tk.Tk()
         self.window.title(title)
         self.window.geometry(str(width)+'x'+str(height))
@@ -13,16 +13,12 @@ class UserInterface:
         self.bot_frame = tk.Frame(self.window, bg='white')
 
         self.window.columnconfigure(0, weight=1)
-        self.window.rowconfigure(0, weight=20)
+        self.window.rowconfigure(0, weight=25)
         self.window.rowconfigure(1, weight=1)
         self.top_frame.grid(column=0, row=0, padx=pad, pady=pad, sticky='NSEW')
         self.bot_frame.grid(column=0, row=1, padx=pad, pady=pad, sticky='NSEW')
 
-        # self.text = tk.StringVar()
-        # self.text.set(u'安')
-        # self.label= tk.Label(self.top_frame, font=('標楷體 12'), textvariable=self.text)
-        self.label= tk.Text(self.top_frame, padx=pad, pady=pad)
-
+        self.label= tk.Text(self.top_frame, font=('Microsoft JhengHei', '12'), padx=pad, pady=pad)
 
         self.input_bar = tk.Entry(self.bot_frame)
         self.submit_btn = tk.Button(
@@ -41,7 +37,8 @@ class UserInterface:
         self.window.mainloop()
 
     def submit_btn_click(self):
-        self.update_text_label()
+        print(self.input_bar.get())
+        self.update_text_label(self.input_bar.get())
 
-    def update_text_label(self):
-        self.label.insert(u'hello there')
+    def update_text_label(self, content):
+        self.label.insert(tk.END, content)
