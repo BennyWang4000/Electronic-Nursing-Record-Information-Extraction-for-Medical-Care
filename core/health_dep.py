@@ -1,14 +1,28 @@
 from ltp import LTP
-from core.ner import HealthNER
+from core.health_ner import HealthNER
 from core.sentence_unit import SentenceUnit
 
 
-class Dep:
+class HealthDep:
+    '''object to get dependency word
+    param
+        hner: core.ner.HealthNER
+        ltp: ltp.LTP
+    '''
+
     def __init__(self, hner: HealthNER, ltp: LTP):
         self.ltp = ltp
         self.hner = hner
 
     def get_dep(self, content):
+        '''get dependency word by typed dependency tree
+        param
+            content: str
+        return 
+            body_lst
+            symp_lst
+            dise_lst
+        '''
         body_lst = []
         symp_lst = []
         dise_lst = []

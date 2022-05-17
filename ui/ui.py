@@ -18,20 +18,21 @@ class UserInterface:
         self.top_frame.rowconfigure(0, weight=9)
         self.bot_frame.rowconfigure(1, weight=1)
 
-        self.text_label = tk.Label(self.top_frame)
+        self.text_label = tk.StringVar(self.top_frame)
         self.input_bar = tk.Entry(self.bot_frame)
-        self.commit_btn = tk.Button(self.bot_frame, text='Commit', bg='gray')
+        self.submit_btn = tk.Button(
+            self.bot_frame, text='Submit', bg='gray', command=self.submit_btn_click)
 
         self.input_bar.grid(column=0, row=0, padx=pad, pady=pad)
-        self.commit_btn.grid(column=1, row=0, padx=pad, pady=pad)
+        self.submit_btn.grid(column=1, row=0, padx=pad, pady=pad)
 
         self.input_bar.columnconfigure(0, weight=6)
-        self.commit_btn.columnconfigure(1, weight=1)
+        self.submit_btn.columnconfigure(1, weight=1)
 
         self.window.mainloop()
 
-    def commit_btn_click():
-        pass
+    def submit_btn_click(self):
+        self.update_text_label()
 
-    def update_text_label():
-        pass
+    def update_text_label(self):
+        self.text_label.set('安安')
