@@ -306,6 +306,7 @@
                 <xs:attribute name="state" type="state" default="normal"/>
                 <xs:attribute name="takefocus" type="bool-int"/>
                 <xs:attribute name="width" type="xs:int"/>
+                <xs:attribute name="command" type="command"/>
                 <!-- @TODO: xscrollcommand, yscrollcommand -->
             </xs:extension>
         </xs:complexContent>

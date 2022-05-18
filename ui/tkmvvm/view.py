@@ -6,6 +6,7 @@ import mvvm
 import io
 import requests
 from lxml import etree
+import webbrowser
 
 SCHEMA_LOCATION = 'https://raw.githubusercontent.com/Joklost/tkmvvm/master/tkmvvm/schema/tkmvvm.xsd'
 START = 'start'
@@ -15,6 +16,7 @@ WIDGET_LOOKUP = {
     'Window': None,
     'Frame': tkinter.Frame,
     'Label': tkinter.Label,
+    'Listbox': tkinter.Listbox,
     'LabelFrame': tkinter.LabelFrame,
     'Entry': tkinter.Entry,
     'Button': tkinter.Button
@@ -154,11 +156,7 @@ class View(abc.ABC):
             # bind selection to store currently selected in the viewmodel
             widget.bind(
                 "<<ListboxSelect>>",
-                lambda event: setattr(
-                    self.context,
-                    'current_selection',
-                    event.widget.curselection()
-                )
+                self.list_bind
             )
 
             # add all items to listbox
@@ -174,6 +172,13 @@ class View(abc.ABC):
         if property_name not in self.properties:
             self.properties[property_name] = []
         self.properties[property_name].append(widget)
+
+    def list_bind(self, event):
+        setattr(self.context, 'current_selection', event.widget.curselection())
+        selected_idx= event.widget.curselection()[0]
+        selected_lst= eval(event.widget.get(0, tkinter.END)[selected_idx])
+        print(selected_lst)
+        webbrowser.open(selected_lst[1])
 
     def mainloop(self):
         self.parent.mainloop()

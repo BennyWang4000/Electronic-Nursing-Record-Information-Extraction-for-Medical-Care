@@ -21,14 +21,16 @@ class App(object):
         self.hner = HealthNER(hner_model_rel_path)
         self.hdep = HealthDep(hner=self.hner, ltp=self.ltp)
 
-        self.body_dao= BodyDao(host=host, user=user, password=password, database=database)
-        self.symp_dao= SympDao(host=host, user=user, password=password, database=database)
-        self.dise_dao= DiseDao(host=host, user=user, password=password, database=database)
-        self.pdf_dao= PdfDao(host=host, user=user, password=password, database=database)
+        # self.body_dao= BodyDao(host=host, user=user, password=password, database=database)
+        # self.symp_dao= SympDao(host=host, user=user, password=password, database=database)
+        # self.dise_dao= DiseDao(host=host, user=user, password=password, database=database)
+        # self.pdf_dao= PdfDao(host=host, user=user, password=password, database=database)
 
-        self.model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao, self.pdf_dao)
+        self.model= HealthModel(self.hdep)
+        # self.model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao, self.pdf_dao)
         self.view_model= HealthViewModel(self.model)
         self.root= Tk()
+        self.root.withdraw()
         self.root.withdraw()
         self.view= HealthView(self.root, self.view_model, height, width)
 

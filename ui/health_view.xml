@@ -7,10 +7,14 @@
         <Frame grid-row="0" grid-column="0" width="250"/>
         <Entry grid-row="0" grid-column="1" text-binding="{{inputbox}}"/>
         <Button grid-row="0" grid-column="2" command="{submit}" text="Submit"/>
+        <!-- <Button grid-row="0" grid-column="3" command="{search}" text="Search"/> -->
     </Frame>
-    <Frame grid-column="0" grid-row="1" grid-sticky="nesw" height="550" width="800">
+    <Frame grid-column="0" grid-row="1" grid-sticky="nesw" height="500" width="800">
         <!-- <Label grid-sticky="nesw" grid-row="0" grid-column="0" text-binding="{{outputbox}}"/> -->
         <!-- <Entry grid-sticky="nesw"  grid-row="0" grid-column="0" text-binding="{{outputbox}}"/> -->
-        <Listbox grid-sticky="nesw"  grid-row="0" grid-column="0" height="550" width="800" listbinding="{{outputbox}}"/>
+        <Listbox grid-sticky="nesw"  grid-row="0" grid-column="0" height="500" width="800" list-binding="{{outputbox}}"/>
     </Frame>    
+    <!-- <Frame grid-column="0" grid-row="3" grid-sticky="nesw" height="50" width="800">
+        <Frame grid-row="0" grid-column="0" width="350"/>
+    </Frame> -->
 </Window>
