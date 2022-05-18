@@ -3,7 +3,7 @@ from ui.tkmvvm.viewmodel import ViewModel
 import tkinter
 
 class HealthView(View):
-    def __init__(self, parent: tkinter.Tk, context: ViewModel, height: int, width: int, debug: bool = True):
+    def __init__(self, parent: tkinter.Tk, context: ViewModel, height: int, width: int):
         super().__init__(parent, context, height, width)
         self.window = tkinter.Toplevel(self.parent)
         self.center_window(self.window)

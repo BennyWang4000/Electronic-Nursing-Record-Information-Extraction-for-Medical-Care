@@ -9,7 +9,8 @@ class HealthViewModel(ViewModel):
 
     def submit(self):
         self.model.cal_dep_lst(self.model.inputtext)
-        content= self.model.integrated_output()
+        #*** content= self.model.integrated_output()
+        content= [1, 2, 3, 4, 5, 6]
         self.update_output(content)
 
     def update_output(self, content):
@@ -22,8 +23,8 @@ class HealthViewModel(ViewModel):
         return self.model.outputtext
 
     @outputbox.setter
-    def outputbox(self, text):
-        self.model.outputtext= text
+    def outputbox(self, lst):
+        self.model.outputtext= lst
         self.on_property_changed('outputbox')
 
     @property
