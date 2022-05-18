@@ -24,20 +24,14 @@ class App(object):
         self.symp_dao= SympDao(host=host, user=user, password=password, database='nutc')
         self.dise_dao= DiseDao(host=host, user=user, password=password, database='nutc')
 
-        model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao)
-        view_model= HealthViewModel(model)
+        self.model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao)
+        self.view_model= HealthViewModel(self.model)
         root= Tk()
         root.withdraw()
-        view= HealthView(root, view_model, 600, 800)
+        self.view= HealthView(self.root, self.view_model, 600, 800)
 
-        view.load_xml('/home/debian-root/Electronic-Nursing-Record-IE-for-WSL/ui/health_view.xml')
-        view.mainloop()
-
-        # self.ui= UserInterface(hdep=hdep)
+        self.view.load_xml('/home/debian-root/Electronic-Nursing-Record-IE-for-WSL/ui/health_view.xml')
+        self.view.mainloop()
 
 if __name__ == '__main__':
     app= App()
-
-
-
-    # print(dep.)

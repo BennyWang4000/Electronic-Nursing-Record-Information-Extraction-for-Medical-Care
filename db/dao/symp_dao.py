@@ -5,4 +5,4 @@ class SympDao:
         self.db= DbHelper(host=host, user=user, password=password, database=database)
 
     def select_where(self, where):
-        return self.db.query('SELECT * FROM ')
+        return self.db.query('SELECT `id` FROM `symp` WHERE `name` = '+ where, None).fetchall()

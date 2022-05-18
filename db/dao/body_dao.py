@@ -12,12 +12,12 @@ class BodyDao:
         '''
         param
             body_tup: list<str>
+        return
+            list<list<dict<'id': str, 'name': str>>>
         '''
         where_clause= ' WHERE '
-        for idx, body in enumerate(body_tup):
+        for body in body_tup:
             where_clause+= '`name` = "'+ body+ '\r" OR '
         where_clause= where_clause[:-4]
-        print('SELECT * FROM `body`'+ where_clause)
 
-
-        return self.db.query('SELECT * FROM (SELECT * FROM `body`'+ where_clause +') AS b INNER JOIN (SELECT * FROM `symp` WHERE `name` = '+ symp+ ') AS s ON s.`id` = b.`id`' , None).fetchall()
+        return self.db.query('SELECT `id` FROM (SELECT * FROM `body`'+ where_clause +') AS b INNER JOIN (SELECT * FROM `symp` WHERE `name` = '+ symp+ ') AS s ON s.`id` = b.`id`' , None).fetchall()
