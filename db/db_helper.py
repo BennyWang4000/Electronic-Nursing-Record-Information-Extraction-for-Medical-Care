@@ -1,6 +1,4 @@
-import mysql.connector as mysql
-from src.config import config
-
+import pymysql
 
 class DbHelper:
     '''

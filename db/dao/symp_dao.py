@@ -1,4 +1,4 @@
-from src.db.DbHelper import DbHelper
+from db.db_helper import DbHelper
 
 class SympDao:
     def __init__():
