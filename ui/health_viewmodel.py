@@ -28,6 +28,6 @@ class HealthViewModel(ViewModel):
         self.on_property_changed('inputbox')
 
     def submit(self):
-        self.model.outputtext= self.model.inputtext
+        self.model.cal_dep_lst(self.model.inputtext)
+        self.model.outputtext= self.model.get_output_dep()
         self.on_property_changed('outputbox')
-        print("submit", 'in', self.model.inputtext, 'out', self.model.outputtext, 'act', self.outputtext)

@@ -16,14 +16,14 @@ from config import *
 
 class App(object):
     def __init__(self):    
-        # self.ltp = LTP()
-        # self.hner = HealthNER(hner_model_rel_path)
-        # self.hdep = HealthDep(hner=self.hner, ltp=self.ltp)
+        self.ltp = LTP()
+        self.hner = HealthNER(hner_model_rel_path)
+        self.hdep = HealthDep(hner=self.hner, ltp=self.ltp)
 
         # self.body_dao= BodyDao()
         # self.symp_dao= SympDao()
         # self.dise_dao= DiseDao()
-        model= HealthModel
+        model= HealthModel(self.hdep)
         view_model= HealthViewModel(model)
         root= Tk()
         root.withdraw()

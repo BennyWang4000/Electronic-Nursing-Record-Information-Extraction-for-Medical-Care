@@ -72,7 +72,6 @@ class HealthDep:
 
             # * =================================================================
             if ne_dep_word.dep_type == 'CMP':
-                print('CMP:')
                 ne_dep_idx = ne_dep_word.dep_idx
             if ne_dep_word.dep_type == 'HED' and ne_dep_word.pos == 'v':
                 for word in sentence.words:

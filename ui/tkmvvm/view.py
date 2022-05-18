@@ -14,6 +14,7 @@ END = 'end'
 WIDGET_LOOKUP = {
     'Window': None,
     'Frame': tkinter.Frame,
+    'Label': tkinter.Label,
     'LabelFrame': tkinter.LabelFrame,
     'Entry': tkinter.Entry,
     'Button': tkinter.Button
