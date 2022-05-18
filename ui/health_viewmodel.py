@@ -9,7 +9,7 @@ class HealthViewModel(ViewModel):
 
     def submit(self):
         self.model.cal_dep_lst(self.model.inputtext)
-        content= self.mode.integrated_output()
+        content= self.model.integrated_output()
         self.update_output(content)
 
     def update_output(self, content):

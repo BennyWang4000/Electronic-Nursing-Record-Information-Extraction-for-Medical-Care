@@ -19,5 +19,6 @@ class BodyDao:
         for body in body_tup:
             where_clause+= '`name` = "'+ body+ '\r" OR '
         where_clause= where_clause[:-4]
-
-        return self.db.query('SELECT `id` FROM (SELECT * FROM `body`'+ where_clause +') AS b INNER JOIN (SELECT * FROM `symp` WHERE `name` = '+ symp+ ') AS s ON s.`id` = b.`id`' , None).fetchall()
+        symp= symp+'\r'
+        print('SELECT s.`id` FROM (SELECT * FROM `body`'+ where_clause +') AS b INNER JOIN (SELECT * FROM `symp` WHERE `name` = "'+ symp+ '" ) AS s ON s.`id` = b.`id`')
+        return self.db.query('SELECT s.`id` FROM (SELECT * FROM `body`'+ where_clause +') AS b INNER JOIN (SELECT * FROM `symp` WHERE `name` = "'+ symp+ '" ) AS s ON s.`id` = b.`id`', None).fetchall()

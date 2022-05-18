@@ -5,7 +5,7 @@ class HealthModel(Model):
     outputtext= ""
     inputtext= ""
 
-    def __init__(self, hdep: HealthDep, body_dao, symp_dao, dise_dao):
+    def __init__(self, hdep: HealthDep, body_dao, symp_dao, dise_dao, pdf_dao):
         self.hdep= hdep
         self.body_lst= []
         self.symp_lst= []
@@ -14,6 +14,7 @@ class HealthModel(Model):
         self.body_dao= body_dao
         self.symp_dao= symp_dao
         self.dise_dao= dise_dao
+        self.pdf_dao= pdf_dao
 
     def cal_dep_lst(self, sentence):
         self.body_lst, self.symp_lst, self.dise_lst= self.hdep.get_dep(sentence)
@@ -21,6 +22,9 @@ class HealthModel(Model):
 
     def get_body_all(self):
         return self.body_dao.select_all()
+
+    def get_pdf_all(self):
+        return self.pdf_dao.select_all()
     
     def integrated_output(self):
         content= ''
@@ -32,10 +36,11 @@ class HealthModel(Model):
         print(id_set)
 
         title= self.get_pdf_where(id_set)
-
+        # print(self.get_pdf_all())
+        
         #TODO not implemented yet! title to string
-
-        return content
+        print(title)
+        return title
 
     def get_pdf_where(self, id_set):
         self.pdf_dao.select_where(id_set)

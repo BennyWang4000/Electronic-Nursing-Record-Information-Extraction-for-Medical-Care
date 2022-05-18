@@ -5,14 +5,8 @@ hner_model_rel_path = r'/home/debian-root/Electronic-Nursing-Record-IE-for-WSL/d
 # * ===== mysql =====
 host = '192.168.137.1'
 user = 'newuser'
+database= 'nutc'
 password = 'Nutcnutc'
-# db_connection = mysql.connect(
-#     host=host, user=user, password=password)
-    
-# print("Connected to:", db_connection.get_server_info())
-# db_connection = mysql.connect(
-#     host=host, database=database, user=user, password=password)
-
 
 #* ===== tkinter =====
 title = 'NUTC'

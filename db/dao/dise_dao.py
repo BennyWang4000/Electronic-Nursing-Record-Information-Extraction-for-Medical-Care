@@ -5,4 +5,5 @@ class DiseDao:
         self.db= DbHelper(host=host, user=user, password=password, database=database)
 
     def select_where(self, where):
-        return self.db.query('SELECT `id` FROM `dise` WHERE `name` = '+ where, None).fetchall()
+        where= where+'\r'
+        return self.db.query('SELECT `id` FROM `dise` WHERE `name` = "'+ where+ '"', None).fetchall()
