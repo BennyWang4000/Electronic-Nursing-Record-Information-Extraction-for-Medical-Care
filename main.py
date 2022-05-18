@@ -20,10 +20,11 @@ class App(object):
         self.hner = HealthNER(hner_model_rel_path)
         self.hdep = HealthDep(hner=self.hner, ltp=self.ltp)
 
-        # self.body_dao= BodyDao()
-        # self.symp_dao= SympDao()
-        # self.dise_dao= DiseDao()
-        model= HealthModel(self.hdep)
+        self.body_dao= BodyDao(host=host, user=user, password=password, database='nutc')
+        self.symp_dao= SympDao(host=host, user=user, password=password, database='nutc')
+        self.dise_dao= DiseDao(host=host, user=user, password=password, database='nutc')
+
+        model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao)
         view_model= HealthViewModel(model)
         root= Tk()
         root.withdraw()

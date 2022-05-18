@@ -92,7 +92,7 @@ class HealthDep:
                 symp_lst.append(dep_tup)
             if ne_word.type == 'DISE':
                 dep_tup += (ne_word.word,)
-                dise_lst.append(sdp_tup)
+                # dise_lst.append(sdp_tup)
                 dise_lst.append(dep_tup)
             if ne_word.type == 'BODY':
                 body_lst.append(dep_tup)

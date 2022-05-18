@@ -8,18 +8,18 @@ class DbHelper:
         db: str
         password: str
     '''
-    def __init__(self, host, user, db, password):
+    def __init__(self, host, user, database, password):
         self.host= host
         self.user= user
-        self.db= db
+        self.database= database
         self.password= password
-        self.connection = pymysql.connect(host=__db_config['host'],
-                                            user = __db_config['user'],
-                                            password = __db_config['password'],
-                                            db = __db_config['db'],
+        self.connection = pymysql.connect(host=host,
+                                            user=user,
+                                            password=password,
+                                            db=database,
                                             charset = 'utf8',
                                             cursorclass = pymysql.cursors.DictCursor)
-        self.cursor = self.__connection.cursor()
+        self.cursor = self.connection.cursor()
         
     def query(self, query, params):
        self.cursor.execute(query, params)
