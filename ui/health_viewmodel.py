@@ -9,9 +9,10 @@ class HealthViewModel(ViewModel):
         self.model= model
 
     def submit(self):
-        #*** self.model.cal_dep_lst(self.model.inputtext)
-        #*** content= self.model.integrated_output()
-        content= [['1', 'https://www.youtube.com/'], ['2', 'https://www.twitter.com/'], ['3', 'https://www.google.com/']]
+        self.model.cal_dep_lst(self.model.inputtext)
+        content= self.model.integrated_output()
+        content= list(content)
+        # content= [['1', 'https://www.youtube.com/'], ['2', 'https://www.twitter.com/'], ['3', 'https://www.google.com/']]
         self.update_output(content)
 
     def search(self):

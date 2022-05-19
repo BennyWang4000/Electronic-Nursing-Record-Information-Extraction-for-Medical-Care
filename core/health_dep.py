@@ -84,6 +84,8 @@ class HealthDep:
                     if word.dep_idx == ne_dep_word.idx and word.dep_type == 'SBV':
                         ne_dep_idx = word.idx
                         break
+            if ne_dep_word.dep_type == 'ADV' and ne_dep_word.pos == 'nb':
+                ne_dep_idx= ne_dep_word.dep_idx
 
             # * =================================================================
 

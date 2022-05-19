@@ -6,35 +6,27 @@ class HealthModel(Model):
     outputtext = ""
     inputtext = ""
 
-    def __init__(self, hdep: HealthDep, body_dao=None, symp_dao=None, dise_dao=None, pdf_dao=None):
+    def __init__(self, hdep: HealthDep, health_dao=None):
         self.hdep = hdep
         self.body_lst = []
         self.symp_lst = []
         self.dise_lst = []
 
-        self.body_dao = body_dao
-        self.symp_dao = symp_dao
-        self.dise_dao = dise_dao
-        self.pdf_dao = pdf_dao
+        self.health_dao = health_dao
 
     def cal_dep_lst(self, sentence):
         self.body_lst, self.symp_lst, self.dise_lst = self.hdep.get_dep(
             sentence)
 
-    def get_body_all(self):
-        return self.body_dao.select_all()
-
-    def get_pdf_all(self):
-        return self.pdf_dao.select_all()
-
     def integrated_output(self):
         content = ''
         id_set = set()
-        where_lst = [self.get_body_where(), self.get_symp_where(),
-                     self.get_body_where()]
+        where_lst = [self.get_symp_where(), self.get_body_where(),
+                     self.get_dise_where()]
         for where in where_lst:
-            for i in where[0]:
-                id_set.add(i['id'])
+            for lst in where:
+                for dct in lst:
+                    id_set.add(dct['id'])
         print(id_set)
 
         title = self.get_pdf_where(id_set)
@@ -45,15 +37,18 @@ class HealthModel(Model):
         return title
 
     def get_pdf_where(self, id_set):
-        self.pdf_dao.select_where(id_set)
+        self.health_dao.select_pdf_where(id_set)
 
     def get_body_where(self):
-        print(self.body_lst)
+        print('body:\t', self.body_lst)
         where = []
         for body_tup in self.body_lst:
             symp = body_tup[-1]
             body_tup = body_tup[:-1]
-            where.append(self.body_dao.select_where(body_tup, symp))
+            where_cur=self.health_dao.select_body_where(body_tup, symp)
+            if len(where_cur)> 0:
+                where.append(where_cur)
+            
         return where
 
     def get_symp_where(self):
@@ -61,20 +56,31 @@ class HealthModel(Model):
         return
             list<list<dict<>>>
         '''
-        print(self.symp_lst)
+        
+        print('symp:\t', self.symp_lst)
         where = []
-        for symp_tup in self.symp_lst:
-            symp = symp_tup[0]
-            where.append(self.symp_dao.select_where(symp))
+        for symp in self.symp_lst:
+            where_cur= self.health_dao.select_symp_where(symp)
+            if len(where_cur)> 0:
+                where.append(where_cur)
+        
         return where
 
     def get_dise_where(self):
         '''
         return 
         '''
-        print(self.dise_lst)
         where = []
-        for dise_tup in self.dise_lst:
-            dise = dise_tup[0]
-            where.append(self.dise_dao.select_where(dise))
+        print('dise:\t', self.dise_lst)
+        for dise in self.dise_lst:
+            where_cur= self.health_dao.select_dise_where(dise)
+            if len(where_cur)> 0:
+                where.append(where_cur)
         return where
+
+
+    def get_body_all(self):
+        return self.health_dao.select_body_all()
+
+    def get_pdf_all(self):
+        return self.health_dao.select_pdf_all()

@@ -21,7 +21,7 @@ class DbHelper:
                                             cursorclass = pymysql.cursors.DictCursor)
         self.cursor = self.connection.cursor()
         
-    def query(self, query, params):
+    def query(self, query, params=None):
        self.cursor.execute(query, params)
        return self.cursor
 

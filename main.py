@@ -1,10 +1,7 @@
 from core.health_dep import HealthDep
 from core.health_ner import HealthNER
 from core.sentence_unit import SentenceUnit
-from db.dao.body_dao import BodyDao
-from db.dao.symp_dao import SympDao
-from db.dao.dise_dao import DiseDao
-from db.dao.pdf_dao import PdfDao
+from db.dao.health_dao import HealthDao
 from ui.health_view import HealthView
 from ui.health_viewmodel import HealthViewModel
 from ui.health_model import HealthModel
@@ -21,13 +18,10 @@ class App(object):
         self.hner = HealthNER(hner_model_rel_path)
         self.hdep = HealthDep(hner=self.hner, ltp=self.ltp)
 
-        # self.body_dao= BodyDao(host=host, user=user, password=password, database=database)
-        # self.symp_dao= SympDao(host=host, user=user, password=password, database=database)
-        # self.dise_dao= DiseDao(host=host, user=user, password=password, database=database)
-        # self.pdf_dao= PdfDao(host=host, user=user, password=password, database=database)
+        self.health_dao= HealthDao(host=host, user=user, password=password, database=database)
 
-        self.model= HealthModel(self.hdep)
-        # self.model= HealthModel(self.hdep, self.body_dao, self.symp_dao, self.dise_dao, self.pdf_dao)
+        # self.model= HealthModel(self.hdep)
+        self.model= HealthModel(self.hdep, self.health_dao)
         self.view_model= HealthViewModel(self.model)
         self.root= Tk()
         self.root.withdraw()
