@@ -29,11 +29,12 @@ class HealthDao:
         return self.db.query('SELECT * FROM `SYMP` WHERE `name` = "'+ where+ '\r"', None).fetchall()
 
     def select_pdf_where(self, id_set):
-        return self.db.query("SELECT * FROM `PDF2`", None).fetchall()
+        # print(self.db.query('SELECT * FROM `body`', None).fetchall())
+        # return self.db.query('SELECT * FROM `body`', None).fetchall()
         where_clause= ''
         for i in id_set:
             where_clause+= "'"+ i+ "',"
-        where_clause= where_clause[:-1]
+        where_clause= where_clause[:-1] 
         print("SELECT * FROM `PDF2` WHERE `id` IN ("+ where_clause+ ")")
         self.db.connection.commit()
         return self.db.query("SELECT * FROM `PDF2` WHERE `id` IN (%s)", where_clause).fetchall()
