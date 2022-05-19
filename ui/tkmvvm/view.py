@@ -178,7 +178,7 @@ class View(abc.ABC):
         selected_idx= event.widget.curselection()[0]
         selected_lst= eval(event.widget.get(0, tkinter.END)[selected_idx])
         print(selected_lst)
-        webbrowser.open(selected_lst[1])
+        webbrowser.open(selected_lst['html'])
 
     def mainloop(self):
         self.parent.mainloop()

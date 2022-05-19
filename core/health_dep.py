@@ -52,21 +52,24 @@ class HealthDep:
         for idx, ne_idx in enumerate(ne_idx_lst):
             dep_tup = ()
             ne_word = sentence.get_word_by_idx(ne_idx)
-
+            # print('0', ne_word.word)
             ne_dep_idx = ne_word.dep_idx
             ne_dep_word = sentence.get_word_by_idx(ne_word.dep_idx)
 
             # * =================================================================
 
             if ne_word.type == 'BODY' and ne_word.idx not in dep_used_idx_lst:
-                dep_used_idx_lst.append(ne_dep_word.idx)
+                dep_used_idx_lst.append(ne_word.idx)
                 dep_tup += (ne_word.word,)
 
                 while ne_dep_word.type == 'BODY':
+                    # print('1', ne_dep_word.word)
                     if ne_dep_word.idx not in dep_used_idx_lst:
+                        # print('2', ne_dep_word.word)
                         dep_tup += (ne_dep_word.word,)
                         dep_used_idx_lst.append(ne_dep_word.idx)
                     ne_dep_word = sentence.get_word_by_idx(ne_dep_word.dep_idx)
+                # print('3', ne_dep_word.word)
                 dep_used_idx_lst.append(ne_dep_word.idx)
                 dep_tup += (ne_dep_word.word,)
 

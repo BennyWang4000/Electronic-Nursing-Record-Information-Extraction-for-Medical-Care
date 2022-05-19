@@ -12,12 +12,9 @@ class HealthViewModel(ViewModel):
         self.model.cal_dep_lst(self.model.inputtext)
         content= self.model.integrated_output()
         content= list(content)
-        # content= [['1', 'https://www.youtube.com/'], ['2', 'https://www.twitter.com/'], ['3', 'https://www.google.com/']]
         self.update_output(content)
 
-    def search(self):
-        print(self.outputbox)
-        # self.open_url()
+
 
     def update_output(self, content):
         self.model.outputtext= content
@@ -28,7 +25,6 @@ class HealthViewModel(ViewModel):
 
     @property
     def outputbox(self):
-        print('out', self.model.outputtext)
         return self.model.outputtext
 
     @outputbox.setter

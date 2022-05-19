@@ -1,12 +1,12 @@
 from ui.tkmvvm.model import Model
 from core.health_dep import HealthDep
-
+from db.dao.health_dao import HealthDao
 
 class HealthModel(Model):
     outputtext = ""
     inputtext = ""
 
-    def __init__(self, hdep: HealthDep, health_dao=None):
+    def __init__(self, hdep: HealthDep, health_dao: HealthDao=None):
         self.hdep = hdep
         self.body_lst = []
         self.symp_lst = []
@@ -27,22 +27,22 @@ class HealthModel(Model):
             for lst in where:
                 for dct in lst:
                     id_set.add(dct['id'])
-        print(id_set)
+        # print(id_set)
 
-        title = self.get_pdf_where(id_set)
-        # print(self.get_pdf_all())
-
-        # TODO not implemented yet! title to string
-        print(title)
-        return title
+        pdf_lst = self.get_pdf_where(id_set)
+        for dct in pdf_lst:
+            dct.pop('id')
+        return pdf_lst
 
     def get_pdf_where(self, id_set):
-        self.health_dao.select_pdf_where(id_set)
+        return self.health_dao.select_pdf_where(id_set)
 
     def get_body_where(self):
         print('body:\t', self.body_lst)
         where = []
         for body_tup in self.body_lst:
+            if len(body_tup)<= 0:
+                continue
             symp = body_tup[-1]
             body_tup = body_tup[:-1]
             where_cur=self.health_dao.select_body_where(body_tup, symp)
