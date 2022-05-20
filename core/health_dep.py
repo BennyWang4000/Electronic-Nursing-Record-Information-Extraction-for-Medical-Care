@@ -70,27 +70,27 @@ class HealthDep:
                         dep_used_idx_lst.append(ne_dep_word.idx)
                     ne_dep_word = sentence.get_word_by_idx(ne_dep_word.dep_idx)
                 # print('3', ne_dep_word.word)
+
+                if ne_dep_word.dep_type == 'CMP':
+                    ne_dep_idx = ne_dep_word.dep_idx
+                if ne_dep_word.dep_type == 'HED' and ne_dep_word.pos == 'v':
+                    for word in sentence.words:
+                        if word.dep_idx == ne_dep_word.idx and word.dep_type == 'VOB':
+                            ne_dep_idx = word.idx
+                            break
+                if ne_dep_word.dep_type == 'HED' and ne_dep_word.pos == 'p':
+                    for word in sentence.words:
+                        if word.dep_idx == ne_dep_word.idx and word.dep_type == 'SBV':
+                            ne_dep_idx = word.idx
+                            break
+                if (ne_dep_word.dep_type == 'ADV' and ne_dep_word.pos == 'nb') or (ne_dep_word.dep_type== 'SBV' and ne_dep_word.pos== 'nd'):
+                    ne_dep_idx= ne_dep_word.dep_idx
+                    ne_dep_word=sentence.get_word_by_idx(ne_dep_idx)
+
+                ne_dep_word=sentence.get_word_by_idx(ne_dep_idx)
+
                 dep_used_idx_lst.append(ne_dep_word.idx)
                 dep_tup += (ne_dep_word.word,)
-
-            # * =================================================================
-
-            if ne_dep_word.dep_type == 'CMP':
-                ne_dep_idx = ne_dep_word.dep_idx
-            if ne_dep_word.dep_type == 'HED' and ne_dep_word.pos == 'v':
-                for word in sentence.words:
-                    if word.dep_idx == ne_dep_word.idx and word.dep_type == 'VOB':
-                        ne_dep_idx = word.idx
-                        break
-            if ne_dep_word.dep_type == 'HED' and ne_dep_word.pos == 'p':
-                for word in sentence.words:
-                    if word.dep_idx == ne_dep_word.idx and word.dep_type == 'SBV':
-                        ne_dep_idx = word.idx
-                        break
-            if ne_dep_word.dep_type == 'ADV' and ne_dep_word.pos == 'nb':
-                ne_dep_idx= ne_dep_word.dep_idx
-
-            # * =================================================================
 
             ne_dep_word = sentence.get_word_by_idx(ne_dep_idx)
 

@@ -116,7 +116,7 @@ class HealthNER:
                     entities.remove(ne)
 
         return entities
-
+        
     def get_ne_idx(self, sent_lst, ne_lst, ignore=None):
         pos_lst = []
         ne_idx = 0
