@@ -1,9 +1,11 @@
 # Electronic Nursing Record Information Extraction for Medical Care
 literally a clean version for windows WSL :3
+Rule-based 📏
 
-<!-- 耦合性是什麼\
+
+耦合性是什麼\
 ![pekora](https://stickers.wiki/static/stickers/endlesshole/file_757404.webp?ezimgfmt=rs:134x134/rscb1/ng:webp/ngcb1)\
-可以吃嗎 -->
+可以吃嗎
 
 
 ## Frontend
