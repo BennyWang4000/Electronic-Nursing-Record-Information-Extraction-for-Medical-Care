@@ -1,6 +1,6 @@
 # Electronic Nursing Record Information Extraction for Medical Care
-literally a clean version for windows WSL :3
-Rule-based 📏
+<!-- literally a clean version for windows WSL :3
+Rule-based 📏 -->
 
 
 <!-- 耦合性是什麼\
