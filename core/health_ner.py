@@ -146,7 +146,7 @@ class HealthNER:
                     if curr_type!= '':
                         ent_lst.append((self.tokenizer.decode(ent_ids[ent_begin:idx]).replace(' ', ''), curr_type))
                     curr_type= ''
-            if ent!= '':
+            if curr_type!= '':
                 ent_lst.append((self.tokenizer.decode(ent_ids[ent_begin:idx]), curr_type))
 
         except:

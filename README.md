@@ -9,12 +9,9 @@ Data Access Object
 
 ## Bert NER Core Package Usage
 ```python
-from ltp import LTP
 from emr_ie.core.health_ner import HealthNER
 
 hner_model_path = 'emr_ie/data/model/model_ner_adam_1e-06_2.pt'
-
-ltp = LTP()
 hner = HealthNER(hner_model_path)
 
 print(hner.get_ne_long('長期服用超大劑量會引起肝毒性。若有發疹、發紅、噁心、嘔吐、食慾不振、頭暈、耳鳴等症狀時，應停藥就醫。'))
