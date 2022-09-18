@@ -1,7 +1,4 @@
 # Electronic Nursing Record Information Extraction for Medical Care
-<!-- literally a clean version for windows WSL :3
-Rule-based 📏 -->
-
 
 ## Frontend
 MVVM pattern\
