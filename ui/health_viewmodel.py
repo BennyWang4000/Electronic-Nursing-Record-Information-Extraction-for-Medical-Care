@@ -14,8 +14,6 @@ class HealthViewModel(ViewModel):
         content= list(content)
         self.update_output(content)
 
-
-
     def update_output(self, content):
         self.model.outputtext= content
         self.on_property_changed('outputbox')

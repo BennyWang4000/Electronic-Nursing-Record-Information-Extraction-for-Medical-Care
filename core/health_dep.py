@@ -87,7 +87,7 @@ class HealthDep:
                     ne_dep_idx= ne_dep_word.dep_idx
                     ne_dep_word=sentence.get_word_by_idx(ne_dep_idx)
 
-                ne_dep_word=sentence.get_word_by_idx(ne_dep_idx)
+                # ne_dep_word=sentence.get_word_by_idx(ne_dep_idx)
 
                 dep_used_idx_lst.append(ne_dep_word.idx)
                 dep_tup += (ne_dep_word.word,)

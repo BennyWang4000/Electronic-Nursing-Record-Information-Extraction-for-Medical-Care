@@ -1,16 +1,26 @@
 # Electronic Nursing Record Information Extraction for Medical Care
 literally a clean version for windows WSL :3
 
-<!-- 耦合性是什麼\
-![pekora](https://stickers.wiki/static/stickers/endlesshole/file_757404.webp?ezimgfmt=rs:134x134/rscb1/ng:webp/ngcb1)\
-可以吃嗎 -->
-
-
 ## Frontend
 MVVM pattern\
 tkinter python ui\
 PyMySQL mysql connector\
 Data Access Object
+
+
+## Bert NER Core Package Usage
+```python
+from ltp import LTP
+from emr_ie.core.health_ner import HealthNER
+
+hner_model_path = 'emr_ie/data/model/model_ner_adam_1e-06_2.pt'
+
+ltp = LTP()
+hner = HealthNER(hner_model_path)
+
+print(hner.get_ne_long('長期服用超大劑量會引起肝毒性。若有發疹、發紅、噁心、嘔吐、食慾不振、頭暈、耳鳴等症狀時，應停藥就醫。'))
+#[('肝', 'DISE'), ('發疹', 'SYMP'), ('發紅', 'SYMP'), ('噁心', 'SYMP'), ('嘔吐', 'SYMP'), ('食慾不振', 'SYMP'), ('頭暈', 'SYMP'), ('耳鳴', 'SYMP')]
+```
 
 
 ## Reference:
